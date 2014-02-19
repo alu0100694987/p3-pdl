@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+ 
+    <title>Mocha</title>
+    <link href="../images/favicon.ico" rel="icon" type="image/x-icon" />
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="mocha.css" />
+    <link rel="stylesheet" type="text/css" href="../global.css" />
+    
+    <script type="text/html" id="template"> <% _.each(items, function(name) { %><td><%= name %> </td><% }); %> </script>
+    
+  </head>
+  
+  <body>
+    <div id="mocha"></div>
+    
+    <script src="mocha.js"></script>
+    <script src="chai.js"></script>
+    <script src="../script/ini.js"></script>
+    <script>mocha.setup('tdd')</script>
+    <script src="tests.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    
+    <script>
+      mocha.run();
+    </script>
+    
+    <!-- Contenido -->    
+    
+    <!-- Footer -->
+
+    
+  </body>
+  
+</html>
