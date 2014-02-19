@@ -23,7 +23,7 @@
   <body>
     <h1>INI files</h1>
     <p>Para ver las pruebas unitarias realizadas con mocha pulse <a href="test/index.html">aqui.</a></p>
-    <p>Para acceder al repositorio Github de este proyecto pulse <a href="">aqui.</a></p>
+    <p>Para acceder al repositorio Github de este proyecto pulse <a href="https://github.com/alu0100694987/p3-pdl">aqui.</a></p>
     <p>
         <h1><u>Ficheros Ini</u></h1>
          Los archivos INI se pueden utilizar para guardar la configuraci&oacute;n b&aacute;sica del usuario con facilidad.
@@ -32,9 +32,9 @@
 	 claves.<br>
 	 La clave y su valor est&aacute;n separados mediante el s&iacute;mbolo (=) .<br>
 	 Los nombres de secci&oacute;n se escriben entre corchetes ([UnaSeccion]).<br>
-	 En los archivos INI, se permiten los comentarios y deben estar marcados por punto y coma (;) al inicio de la l&ieacute;nea.<br>
+	 En los archivos INI, se permiten los comentarios y deben estar marcados por punto y coma (;) al inicio de la l&iacute;nea.<br>
 	 Como no hay un est&aacute;ndar definido, se permiten otros caracteres como (#).<br>
-	 En estos d&ieacute;as, los archivos INI no son tan populares como los archivos XML, debido a que no manejan muy bien grandes cadenas 
+	 En estos d&iacute;as, los archivos INI no son tan populares como los archivos XML, debido a que no manejan muy bien grandes cadenas 
 	 de texto, sin embargo, archivos similares a los INI, son usados comunmente en configuraciones Linux/Unix.<br>
 	 Para ver un ejemplo pulse  <a href="#" onclick="cambiar('texto'); return false;">mostrar/ocultar</a><br>
 	 <div id="texto" style="display: none">
@@ -59,18 +59,31 @@
     <div id="drop_zone">Arrastre sus ficheros aqu&iacute;</div>
     <output id="list"></output>
     <script>
-
+       function cambiarLinea(evt) {
+	$(this).css('border', '2px solid #0B85A1');
+       }
+      
       function handleDragOver(evt) {
-   
 	evt.stopPropagation();
 	evt.preventDefault();
 	evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+	var files = evt.dataTransfer.files; 
+	var output = [];
+	for (var i = 0, f; f = files[i]; i++) {
+	  output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                  f.size, ' bytes, &uacute;ltima vez modificado: ',
+                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                  '</li>');
+       document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+      }
+	$(this).css('border', '2px dotted #0B85A1');
       }
       
       // Setup the dnd listeners.
       var dropZone = document.getElementById('drop_zone');
       dropZone.addEventListener('dragover', handleDragOver, false);
       dropZone.addEventListener('drop', calculate, false);
+      dropZone.addEventListener('drop', cambiarLinea, false);
       
     </script>
     
@@ -93,7 +106,7 @@
     
     <footer>
       <div id="piedepagina">
-        Pr&aacute;ctica - Ficheros INI - Procesadores de Lenguajes | <a href="index.html">http://alu0100694987.github.io/p2-pdl/</a> <br>
+	Pr&aacute;ctica - Ficheros INI - Procesadores de Lenguajes | <a href="index.html">http://alu0100694987.github.io/p2-pdl/</a> <br>
         Desarrollado por: Sawan J. Kapai Harpalani <a href="alu0100694765@ull.edu.es">alu0100694765@ull.edu.es</a> <br> 
         Cristo Gonz&aacute;lez Rodr&iacute;guez <a href ="alu0100694987@ull.edu.es">alu0100694987@ull.edu.es</a> <br>
       </div>
