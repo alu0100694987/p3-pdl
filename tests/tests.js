@@ -1,7 +1,7 @@
 
 var assert = chai.assert;
 
-suite('Ficheros Init', function() {
+suite('Pruebas Unitarias Mocha del parseador de ficheros INI', function() {
   
     test('Funcionamiento correcto del header', function() {
         var tokens = lexer('[HEADER]');
