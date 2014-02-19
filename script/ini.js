@@ -98,9 +98,10 @@ window.onload = function() {
   
   /* Se comprueba si el navegador soporta localStorage y algún dato almacenado */
   if (window.localStorage && localStorage.fileinput && localStorage.initialinput && localStorage.finaloutput) {
-    document.getElementById("fileinput").value = localStorage.fileinput;
-    document.getElementById("initialinput").value = localStorage.initialinput;
-    document.getElementById("finaloutput").value = localStorage.finaloutput;
+    document.getElementById("out").className = "unhidden";
+    document.getElementById("fileinput").innerHTML = localStorage.fileinput;
+    document.getElementById("initialinput").innerHTML = localStorage.initialinput;
+    document.getElementById("finaloutput").innerHTML = localStorage.finaloutput;
   }
 };
 
