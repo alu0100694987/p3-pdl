@@ -5,8 +5,8 @@ $(document).ready(function() {
 });
 
 function calculate(evt) {
-  var f = evt.target.files[0]; 
-
+  var f = evt.target.files[0];
+  
   if (f) {
     var r = new FileReader();
     r.onload = function(e) { 
@@ -18,31 +18,38 @@ function calculate(evt) {
       out.className = 'unhidden';
       initialinput.innerHTML = contents;
       finaloutput.innerHTML = pretty;
+      
+      /* Local Storage */
+      if (window.localStorage) {
+	localStorage.fileinput = f;
+	localStorage.initialinput = contents;
+	localStorage.finaloutput = pretty;
+      }
     }
     r.readAsText(f);
   } else { 
     alert("Failed to load file");
   }
-}
+  
 
-var temp = '<li> <span class = "<%= token.type %>"> <%= match %> </span>\n';
+}
 
 function tokensToString(tokens) {
    var r = '';
    for(var i=0; i < tokens.length; i++) {
      var t = tokens[i]
      var s = JSON.stringify(t, undefined, 2);
-     s = _.template(temp, {token: t, match: s});
+     s = _.template(template.innerHTML, {token: t, match: s});
      r += s;
    }
-   return '<ol>\n'+r+'</ol>';
+   return '<ol>\n'+r+'\n</ol>';
 }
 
 function lexer(input) {
   var blanks         = /^\s+/;
   var iniheader      = /^\[([^\]\r\n]+)\]/;
   var comments       = /^[;#](.*)/;
-  var nameEqualValue = /^([^=;\r\n]+)=([^;\r\n]*)/;
+  var nameEqualValue = /^([^=;\r\n]+)=((?:\/\s*\n|[^;\r\n])*)/;
   var any            = /^(.|\n)+/;
 
   var out = [];
@@ -77,4 +84,14 @@ function lexer(input) {
   }
   return out;
 }
+
+window.onload = function() {
+  
+  /* Se comprueba si el navegador soporta localStorage y algún dato almacenado */
+  if (window.localStorage && localStorage.fileinput && localStorage.initialinput && localStorage.finaloutput) {
+    document.getElementById("fileinput").value = localStorage.fileinput;
+    document.getElementById("initialinput").value = localStorage.initialinput;
+    document.getElementById("finaloutput").value = localStorage.finaloutput;
+  }
+};
 
