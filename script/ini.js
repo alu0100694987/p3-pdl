@@ -5,7 +5,16 @@ $(document).ready(function() {
 });
 
 function calculate(evt) {
-  var f = evt.target.files[0];
+
+  var f;
+  
+  if (evt.type != 'drop') // Evento Input Target
+    f = evt.target.files[0];
+  else { // Evento Drag & Drop
+    evt.stopPropagation();
+    evt.preventDefault();
+    f = evt.dataTransfer.files[0];
+  }
   
   if (f) {
     var r = new FileReader();
