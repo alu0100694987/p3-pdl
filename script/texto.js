@@ -1,10 +1,10 @@
-function cambiar(var)
+function cambiar(v)
 {
-	vista=document.getElementById(var).style.display;
+	vista=document.getElementById(v).style.display;
 	if (vista=='none')
 		vista='block';
 	else
 		vista='none';
 
-	document.getElementById(var).style.display = vista;
+	document.getElementById(v).style.display = vista;
 }

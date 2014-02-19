@@ -21,38 +21,46 @@
   </head>
   
   <body>
-    <h1>INI files</h1>
-    <p>Para ver las pruebas unitarias realizadas con mocha pulse <a href="tests/index.html">aqui.</a></p>
-    <p>Para acceder al repositorio Github de este proyecto pulse <a href="https://github.com/alu0100694987/p3-pdl">aqui.</a></p>
-    <p>
-        <h1><u>Ficheros Ini</u></h1>
-         Los archivos INI se pueden utilizar para guardar la configuraci&oacute;n b&aacute;sica del usuario con facilidad.
-         Con la unidad INIfiles y la clase TINIFile puedes trabajar f&aacute;cilmente con los archivos INI. Esta unidad forma parte de la FCL.<br>
-	 Los archivos INI utilizan corchetes para incluir secciones. En estas secciones se encuentran las claves y los valores de las 
-	 claves.<br>
-	 La clave y su valor est&aacute;n separados mediante el s&iacute;mbolo (=) .<br>
-	 Los nombres de secci&oacute;n se escriben entre corchetes ([UnaSeccion]).<br>
-	 En los archivos INI, se permiten los comentarios y deben estar marcados por punto y coma (;) al inicio de la l&iacute;nea.<br>
-	 Como no hay un est&aacute;ndar definido, se permiten otros caracteres como (#).<br>
-	 En estos d&iacute;as, los archivos INI no son tan populares como los archivos XML, debido a que no manejan muy bien grandes cadenas 
-	 de texto, sin embargo, archivos similares a los INI, son usados comunmente en configuraciones Linux/Unix.<br>
-	 Para ver un ejemplo pulse  <a href="#" onclick="cambiar('texto'); return false;">mostrar/ocultar</a><br>
-	 <div id="texto" style="display: none">
+
+    <h1>Ficheros INI</h1>
+    
+    <p>Acceso a las pruebas: <a href="tests/index.html">Pruebas</a></p>
+    <p>Acceso al repositorio GitHub del proyecto: <a href="https://github.com/alu0100694987/p3-pdl">Repositorio GitHub</a></p>
+    
+    <ul>
+      <li> Los archivos INI se pueden utilizar para guardar la configuraci&oacute;n b&aacute;sica del usuario. Con la unidad INIfiles (que forma parte de la FCL) y la clase TINIFile se puede 
+        trabajar f&aacute;cilmente con los archivos INI. </li>
+      <li> Se utilizan corchetes para incluir secciones, donde se encuentran las claves y sus correspondientes valores. </li>
+      <li> Una clave debe estar separada de su valor mediante el s&iacute;mbolo '='. </li>
+      <li> Los nombres de secci&oacute;n se escriben entre corchetes '[UnaSeccion]'. </li>
+      <li> Los comentarios deben estar precedidos por punto y coma: ';', al inicio de la l&iacute;nea. </li>
+	</ul>
+	
+	<p> Actualmente, los ficheros INI no son tan populares como los archivos XML, debido a que no manejan con facilidad grandes cadenas 
+	 de texto, sin embargo, archivos similares a los INI, son usados comunmente en configuraciones Linux/Unix.</p>
+	
+	<div id="ejemplo">
+	
+	  <p> Ejemplo de fichero INI: [ <a href="#" onclick="cambiar('texto'); return false;">mostrar/ocultar</a> ] </p>
+	  
+	  <div id="texto" style="display: none">
 	    <fieldset> 
-		<font color=Green>; Comment. Beginning of INI file<br><br>
-		; empty lines are ignored<br><br>
-		; note that no section has been defined.<br></font>
-		<font color=Blue>Compiler</font>=<font color=Purple>Delphi</font><br>
-		<font color=Green>; Key: Compiler<br>
-		; Value: Delphi<br><br></font>
-		<b>[General]</b><br>
-		<font color=Green>; This starts a General section<br></font>
-		<font color=Blue>Compiler</font>=<font color=Purple>FreePascal</font><br>
-		<font color=Green>; Key Compiler and value FreePascal</font>
+          <p class='green'>; Comment. Beginning of INI file</br>
+          <p class='green'>; empty lines are ignored</br></br>
+          <p class='green'>; note that no section has been defined.</p>
+          <p class='cyan'>Compiler=Delphi</p>
+          <p class='green'>; Key: Compiler</p>
+          <p class='green'>; Value: Delphi</br></p>
+          <p>[General]</p>
+          <p class='green'>; This starts a General section<br></p>
+          <p class='cyan'>Compiler=FreePascal</p>
+          <p class='green'>; Key Compiler and value FreePascal</p>
 	    </fieldset>
-	 </div>   
-	<br> A continuaci&oacute;n se ofrece al usuario que expiremente con este tipo de ficheros.
-      </p>
+	    
+	  </div>   
+	</div>
+	
+	<p> Indique un fichero INI: </p>
     
     <input type="file" id="fileinput" />
     
@@ -89,26 +97,25 @@
     
     <div id="out" class="hidden">
 
-    <table>
-      <tr><th>Original</th><th>Tokens</th></tr>
-      <tr>
-        <td>
-          <pre class="input" id="initialinput"></pre>
-        </td>
-        <td>
-          <pre class="output" id="finaloutput"></pre>
-        </td>
-      </tr>
-    </table>
+      <table>
+        <tr><th>Original</th><th>Tokens</th></tr>
+        <tr>
+          <td>
+            <pre class="input" id="initialinput"></pre>
+          </td>
+          <td>
+            <pre class="output" id="finaloutput"></pre>
+          </td>
+        </tr>
+      </table>
     </div>
     
     <!-- Footer -->
     
     <footer>
       <div id="piedepagina">
-	Pr&aacute;ctica - Ficheros INI - Procesadores de Lenguajes | <a href="index.html">http://alu0100694987.github.io/p2-pdl/</a> <br>
-        Desarrollado por: Sawan J. Kapai Harpalani <a href="alu0100694765@ull.edu.es">alu0100694765@ull.edu.es</a> <br> 
-        Cristo Gonz&aacute;lez Rodr&iacute;guez <a href ="alu0100694987@ull.edu.es">alu0100694987@ull.edu.es</a> <br>
+        Pr&aacute;ctica: Ficheros INI - PDL | <a href="index.html">https://github.com/alu0100694987/p3-pdl/</a> <br>
+        <!-- Cristo Gonz&aacute;lez Rodr&iacute;guez <a href ="alu0100694987@ull.edu.es">alu0100694987@ull.edu.es</a> Sawan J. Kapai Harpalani <a href="alu0100694765@ull.edu.es">alu0100694765@ull.edu.es</a>--> 
       </div>
     </footer>
   </body>
