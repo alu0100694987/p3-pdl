@@ -3,7 +3,7 @@ Práctica 3: Ficheros INI
 
 Cristo González Rodríguez - alu0100694987
 
-Sawan J. Kapai Harpalani
+Sawan J. Kapai Harpalani - alu0100694765
 
 Repositorio: https://github.com/alu0100694987/p3-pdl
 
