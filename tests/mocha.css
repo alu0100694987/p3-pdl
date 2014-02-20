@@ -214,12 +214,12 @@ body {
 }
 
 #mocha-stats {
-  position: fixed;
   top: 15px;
   right: 10px;
   font-size: 12px;
   margin: 0;
   color: #888;
+  padding-right: 30%;
   z-index: 1;
 }
 
@@ -229,7 +229,7 @@ body {
 }
 
 #mocha-stats em {
-  color: black;
+  color: white;
 }
 
 #mocha-stats a {
