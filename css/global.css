@@ -24,7 +24,6 @@
     font-family: Andika;
     font-size: 80px;
     text-shadow: 0px 0px 8px white;
-    color: 3A3B43;
     text-align: center; 
   }
   
@@ -65,6 +64,14 @@
     box-shadow: inset 0px 10px 60px 0px rgba(255,255,255,0.15);
   }
   
+  pre {
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+  }
+  
   .thumb {
     height: 75px;
     border: 1px solid #000;
@@ -80,6 +87,11 @@
 
   #contenido {
     padding-bottom: 60px;
+  }
+  
+  #tablaout {
+    table-layout: fixed;
+    width: 100%;
   }
 
   #finaltable:hover td { 
