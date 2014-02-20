@@ -73,7 +73,7 @@ th, td        { vertical-align: top; text-align: left; }
 /* #finaltable table, td { border:1px solid white; } */
 #finaltable:hover td { background-color: blue; } 
 tr:nth-child(odd)    { background-color:#eee; }
-tr:nth-child(even)    { background-color:#00FF66; }
+tr:nth-child(even)    { background-color:#58FAF4; }
 input        { text-align: right;  border: none;       }     /* Align input to the right  */
 textarea     { border: outset; border-color: white;       }                        
 table        { border: inset; border-color: white; }
@@ -81,14 +81,41 @@ table        { border: inset; border-color: white; }
 .unhidden    { display: block; }
 table.center { margin-left:auto; margin-right:auto; }
 #result      { border-color: red; }
-tr.error       { background-color: red; }
-pre.output   { background-color: white; }
-span.repeated { background-color: red }
-span.header { background-color: blue }
-span.comments { background-color: orange }
-span.blanks { background-color: green }
-span.nameEqualValue { background-color: cyan }
-span.error { background-color: red }
+tr.error       {  font-weight: bold;
+                  color: white; }
+
+#initialinput {
+   color: #B404AE;
+   font-weight: bold;
+}
+
+#finalinput {
+   color: #FF00FF;
+   font-weight: bold;
+}
+
+   #drop_zone {
+   margin: 0 auto;
+   border:2px dotted #0B85A1;
+   width:400px;
+   color:#92AAB0;
+   text-align:center;
+   vertical-align:middle;
+   padding:10px 10px 10 10px;
+   margin-bottom:10px;
+   font-size:200%;
+   }
+
+
+li {
+   color: #B404AE;
+   font-weight: bold;
+}
+
+span{
+   color: #B404AE;
+   font-weight: bold;
+}
 
 body
 {
