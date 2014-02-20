@@ -22,6 +22,7 @@
   
   <body>
 
+  <div id="contenido">
     <h1>Ficheros INI</h1>
     
     <p>Acceso a las pruebas: <a href="tests/index.html">Pruebas</a></p>
@@ -60,40 +61,48 @@
 	  </div>   
 	</div>
 	
-	<p> Indique un fichero INI: </p>
+	<!-- Carga de Fichero -->
+	<p> Indique un fichero INI: <input type="file" id="fileinput" /></p>
     
-    <input type="file" id="fileinput" />
     
-    <div id="drop_zone">Arrastre sus ficheros aqu&iacute;</div>
+    
+    <!-- Drag & Drop -->
+    <div id="drop_zone">Arrastre un fichero a la ventana</div>
     <output id="list"></output>
+    
     <script>
-       function cambiarLinea(evt) {
-	$(this).css('border', '2px solid #0B85A1');
-       }
+    
+      function cambiarLinea(evt) {
+        $(this).css('border', '2px solid #0B85A1');
+      }
       
       function handleDragOver(evt) {
-	evt.stopPropagation();
-	evt.preventDefault();
-	evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
-	var files = evt.dataTransfer.files; 
-	var output = [];
-	for (var i = 0, f; f = files[i]; i++) {
-	  output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                  f.size, ' bytes, &uacute;ltima vez modificado: ',
-                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                  '</li>');
-       document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-      }
-	$(this).css('border', '2px dotted #0B85A1');
+      
+        evt.stopPropagation();
+        evt.preventDefault();
+        evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+        var files = evt.dataTransfer.files; 
+        var output = [];
+        
+        for (var i = 0, f; f = files[i]; i++) {
+          output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+          f.size, ' bytes, &uacute;ltima vez modificado: ',
+          f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+          '</li>');
+          document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+        }
+        $(this).css('border', '2px dotted #0B85A1');
       }
       
-      // Setup the dnd listeners.
+      // Escuchas
       var dropZone = document.getElementById('drop_zone');
       dropZone.addEventListener('dragover', handleDragOver, false);
-      dropZone.addEventListener('drop', calculate, false);
+      dropZone.addEventListener('drop', calculate, false); // Llamada a la función 'calculate' tras soltar un archivo
       dropZone.addEventListener('drop', cambiarLinea, false);
       
     </script>
+    
+    <!-- Tabla Resultado -->
     
     <div id="out" class="hidden">
 
@@ -109,6 +118,7 @@
         </tr>
       </table>
     </div>
+  </div>
     
     <!-- Footer -->
     

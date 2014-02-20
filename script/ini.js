@@ -30,9 +30,9 @@ function calculate(evt) {
       
       /* Local Storage */
       if (window.localStorage) {
-	localStorage.fileinput = f;
-	localStorage.initialinput = contents;
-	localStorage.finaloutput = pretty;
+        localStorage.fileinput = f;
+        localStorage.initialinput = contents;
+        localStorage.finaloutput = pretty;
       }
     }
     r.readAsText(f);
@@ -58,11 +58,13 @@ function lexer(input) {
   var blanks         = /^\s+/;
   var iniheader      = /^\[([^\]\r\n]+)\]/;
   var comments       = /^[;#](.*)/;
-  var nameEqualValue = /^([^=;\r\n]+)=((?:\/\s*\n|[^;\r\n])*)/;
+  var nameEqualValue = /^([^=;\r\n]+)=([^;\r\n\\]*)/;
+  var multiline      = /^\\\s*(?:\#.*)?\n([^\\;#\r\n]*)(?:\#.*)?/;
   var any            = /^(.|\n)+/;
 
   var out = [];
   var m = null;
+  var aux = null;
 
   while (input != '') {
     if (m = blanks.exec(input)) {
@@ -78,9 +80,19 @@ function lexer(input) {
       out.push({ type: 'comments', match: m });
     }
     else if (m = nameEqualValue.exec(input)) {
-      /* while (match casa con /\\$/) concatena la siguiente lÃ­nea */
+      
+      /* Soporte multilínea */
+      aux = m;
       input = input.substr(m.index+m[0].length);
-      out.push({ type: 'nameEqualValue', match: m });
+      
+      while (m = multiline.exec(input)) {
+        aux[0] += m[1];
+        aux[aux.length-1] += m[1];
+        input = input.substr(m.index+m[0].length);
+      }
+      
+      out.push({ type: 'nameEqualValue', match: aux });
+      aux = null;
     }
     else if (m = any.exec(input)) {
       out.push({ type: 'error', match: m });
@@ -96,7 +108,7 @@ function lexer(input) {
 
 window.onload = function() {
   
-  /* Se comprueba si el navegador soporta localStorage y algún dato almacenado */
+  /* Se comprueba si el navegador soporta localStorage y hay algún dato almacenado */
   if (window.localStorage && localStorage.fileinput && localStorage.initialinput && localStorage.finaloutput) {
     document.getElementById("out").className = "unhidden";
     document.getElementById("fileinput").innerHTML = localStorage.fileinput;
